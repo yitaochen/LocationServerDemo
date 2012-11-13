@@ -1,0 +1,70 @@
+/*************************************************
+fingerPrints:
+
+# locationId: 
+楼编号：___;层编号：__;室编号___;X坐标:__;Y坐标__
+example：
+    "locationId":"X62010010101"
+        "buildingId":"X62"
+        "floorId":"01"
+        "roomId":"001"
+        "locationX":"01"
+        "locationY":"01"
+
+# bearing:
+(罗盘显示的)方位
+
+# wapInfo
+各个wap的信号强度值
+## bssid
+wap的bssid值
+## rssid
+wap的信号强度值
+
+# options:可选数据
+## wapNumScan:
+扫描到wap的个数
+
+
+**************************************************/
+{
+    "fingerPrints": [{
+        "locationId": "X62010010101",
+        "bearing": "0",
+        "wapInfo": [{
+            "bssid": "00602F3A07BC",
+            "rssid": "58"
+        } {
+            "bssid": "00602F3A07BD",
+            "rssid": "69"
+        } {
+            "bssid": "00602F3A07BE",
+            "rssid": "64"
+        } {
+            "bssid": "00602F3A07BF",
+            "rssid": "25"
+        } {
+            "bssid": "00602F3A07BG",
+            "rssid": "67"
+        }]
+    } {
+        "locationId": "X62010010102",
+        "bearing": "0",
+        "wapInfo": [{
+            "bssid": "00602F3A07BC",
+            "rssid": "45"
+        } {
+            "bssid": "00602F3A07BD",
+            "rssid": "56"
+        } {
+            "bssid": "00602F3A07BE",
+            "rssid": "67"
+        } {
+            "bssid": "00602F3A07BF",
+            "rssid": "78"
+        } {
+            "bssid": "00602F3A07BG",
+            "rssid": "89"
+        }]
+    }]
+}
