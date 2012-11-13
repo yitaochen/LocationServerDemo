@@ -14,8 +14,9 @@ Location Server Demo 1.2
 # Function:
 1. Use finger.txt store the finger database
 example:
-    locationId,wap1_rssid,wap2_rssid,wap3_rssid,wap4_rssid,wap5_rssid
-    X62010010101,58,69,64,25,67
+
+        locationId,wap1_rssid,wap2_rssid,wap3_rssid,wap4_rssid,wap5_rssid
+        X62010010101,58,69,64,25,67
 
 2. use url parse and http post to get work
 example:
