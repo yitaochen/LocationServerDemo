@@ -2,7 +2,6 @@
 // by vampirefan
 // functions for different request. include /, /start, /login, /finger, /locate, /dbshow
 // -----------------------------------------------------
-
 var querystring = require("querystring");
 var locateAlgorithms = require("./locateAlgorithms");
 fs = require("fs");
@@ -38,7 +37,7 @@ function finger(response, postData, hostAddress, port) {
   if(postData === "") {
     body = "finger failed. postData is null.";
   } else {
-    body = "You've sent the finger: " + postData;
+    body = "You've sent the finger: " + postData + ".\n";
 
     // update finger DataBase
     // TXT METHOD
@@ -47,25 +46,29 @@ function finger(response, postData, hostAddress, port) {
     //   if(err) throw err;
     //   console.log(storeData + 'was appended to finger.txt!');
     // });
-
     // JSON METHOD
-    file = fs.readFileSync("./db/finger.json", "utf8");
-    var fingerdb = JSON.parse(file);
-    var fingerFrame = JSON.parse(postData);
-    fingerdb.push(fingerFrame);
-    storeData = JSON.stringify(fingerdb);
-    // console.log(file);
-    // console.log(storeData);
-    fs.writeFile("./db/finger.json", storeData, function(e) {
-      if(e) throw e;
+    try {
+      file = fs.readFileSync("./db/finger.json", "utf8");
+      var fingerdb = JSON.parse(file);
+      var fingerFrame = JSON.parse(postData);
+      fingerdb.push(fingerFrame);
+      storeData = JSON.stringify(fingerdb);
+      // console.log(file);
+      // console.log(storeData);
+      fs.writeFile("./db/finger.json", storeData, function(e) {
+        if(e) throw e;
+        body += "finger complete.";
+      });
+    } catch(err) {
+      body += "finger failed. invaled postData.";
+    }
+    //respond
+    response.writeHead(200, {
+      "Content-Type": "text/plain"
     });
+    response.write(body);
+    response.end();
   }
-  //respond
-  response.writeHead(200, {
-    "Content-Type": "text/plain"
-  });
-  response.write(body);
-  response.end();
 }
 
 function locate(response, postData, hostAddress, port) {
