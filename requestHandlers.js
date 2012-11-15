@@ -1,12 +1,15 @@
 // requestHandlers.js
+// by vampirefan
+// functions for different request. include /, /start, /login, /finger, /locate, /dbshow
+// -----------------------------------------------------
+
 var querystring = require("querystring");
 var locateAlgorithms = require("./locateAlgorithms");
 fs = require("fs");
-server = require("./server")
+server = require("./server");
 
 function start(response, postData, hostAddress, port) {
   console.log("Request handler 'start' was called.");
-
   //respond
   response.writeHead(200, {
     "Content-Type": "text/html"
@@ -18,7 +21,6 @@ function start(response, postData, hostAddress, port) {
 
 function login(response, postData, hostAddress, port) {
   console.log("Request handler 'login' was called.");
-
   //respond
   var body = "You've logined to server. 'Finger' for fingerpringting your current location; 'Locate' for calculating your current location.";
   response.writeHead(200, {
@@ -31,30 +33,44 @@ function login(response, postData, hostAddress, port) {
 function finger(response, postData, hostAddress, port) {
   console.log("Request handler 'finger' was called.");
 
+  var body = "";
+  var storeData = "";
+  if(postData === "") {
+    body = "finger failed. postData is null.";
+  } else {
+    body = "You've sent the finger: " + postData;
+    //update finger DataBase
+    // TXT METHOD
+    // var storeData = postData + "\n";
+    // fs.appendFile("./db/finger.txt", storeData, function(err) {
+    //   if(err) throw err;
+    //   console.log(storeData + 'was appended to finger.txt!');
+    // });
+    // JSON METHOD
+    file = fs.readFileSync("./db/finger.json", "utf8");
+    var fingerdb = JSON.parse(file);
+    var fingerFrame = JSON.parse(postData);
+    fingerdb.push(fingerFrame);
+    storeData = JSON.stringify(fingerdb);
+    // console.log(file);
+    // console.log(storeData);
+    fs.writeFile("./db/finger.json", storeData, function(e) {
+      if(e) throw e;
+    });
+  }
   //respond
   response.writeHead(200, {
     "Content-Type": "text/plain"
   });
-  var body = "You've sent the finger: " + postData;
   response.write(body);
-
-  //update finger.txt
-  file = fs.readFileSync("./db/finger.txt", "utf8");
-  var payload = file.toString();
-  var fingers = payload.split("\n");
-  var storeData = postData + "\n";
-  fs.appendFile("./db/finger.txt", storeData, function(err) {
-    if(err) throw err;
-    console.log(storeData + 'was appended to finger.txt!');
-  });
   response.end();
 }
-
 
 function locate(response, postData, hostAddress, port) {
   console.log("Request handler 'locate' was called.");
 
-  fs.readFile("./db/finger.txt", "utf8", function(error, file) {
+  // fs.readFile("./db/finger.txt", "utf8", function(error, file) {
+  fs.readFile("./db/finger.json", "utf8", function(error, file) {
     if(error) {
       response.writeHead(500, {
         "Content-Type": "text/plain"

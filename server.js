@@ -1,4 +1,7 @@
-//server.js
+// server.js
+// by vampirefan
+// create server and call router.js. store postData.
+// -----------------------------------------------------
 var http = require("http");
 var url = require("url");
 

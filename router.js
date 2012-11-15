@@ -1,4 +1,7 @@
-//router.js
+// router.js
+// by vampirefan
+// call requestHandlers.js for different pathname.
+// -----------------------------------------------------
 
 function route(handle, pathname, response, postData, hostAddress, port) {
     console.log("About to route a request for " + pathname);
