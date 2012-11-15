@@ -5,6 +5,7 @@
 var server = require("./server");
 var router = require("./router");
 var requestHandlers = require("./requestHandlers");
+var mongo = require("./mongo");
 
 var handle = {};
 handle["/"] = requestHandlers.start;
@@ -38,3 +39,6 @@ var port = 7878;
 
 // start Server.
 server.start(router.route, handle, hostAddress, port);
+
+// start mongodb Server.
+mongo.start();
