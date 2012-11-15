@@ -27,7 +27,7 @@ function ed(file, response, postData) {
     var locateFrame = JSON.parse(postData);
     var fingerdb = JSON.parse(file);
 
-    var fingersdistantce = new Array([]);
+    var fingersdistantce = new Array();
     // console.log(fingerdb.length);
     for(var i = 0; i < fingerdb.length; ++i) {
         var tempdistance = 0;

@@ -39,13 +39,15 @@ function finger(response, postData, hostAddress, port) {
     body = "finger failed. postData is null.";
   } else {
     body = "You've sent the finger: " + postData;
-    //update finger DataBase
+
+    // update finger DataBase
     // TXT METHOD
     // var storeData = postData + "\n";
     // fs.appendFile("./db/finger.txt", storeData, function(err) {
     //   if(err) throw err;
     //   console.log(storeData + 'was appended to finger.txt!');
     // });
+
     // JSON METHOD
     file = fs.readFileSync("./db/finger.json", "utf8");
     var fingerdb = JSON.parse(file);

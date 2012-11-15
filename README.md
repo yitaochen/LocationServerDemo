@@ -130,6 +130,7 @@ NOTE: check the example fingerFrame and locateFrame in `./db/`
 # Function:
 use url parse and http post to get the system work    
 example:
+
     + `/start`, `/`: test connection;
     + `/login`: get the instruction;
     + `/finger`: post current locationId and wap_rssids;
