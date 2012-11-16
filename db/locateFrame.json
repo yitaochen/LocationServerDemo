@@ -1,0 +1,21 @@
+// locateFrame Example:
+//    for communication between Client and Server.
+{
+    "bearing": "0",
+    "wapInfo": [{
+        "bssid": "00602F3A07BC",
+        "rssid": "58"
+    }, {
+        "bssid": "00602F3A07BD",
+        "rssid": "69"
+    }, {
+        "bssid": "00602F3A07BE",
+        "rssid": "64"
+    }, {
+        "bssid": "00602F3A07BF",
+        "rssid": "25"
+    }, {
+        "bssid": "00602F3A07BG",
+        "rssid": "67"
+    }]
+}
