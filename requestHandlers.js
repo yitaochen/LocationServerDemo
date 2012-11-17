@@ -4,6 +4,7 @@
 // -----------------------------------------------------
 var querystring = require("querystring");
 var locateAlgorithms = require("./locateAlgorithms");
+var mongo = require("./mongo");
 fs = require("fs");
 server = require("./server");
 
@@ -47,20 +48,28 @@ function finger(response, postData, hostAddress, port) {
     //   console.log(storeData + 'was appended to finger.txt!');
     // });
     // JSON METHOD
+    // try {
+    //   file = fs.readFileSync("./db/finger.json", "utf8");
+    //   var fingerdb = JSON.parse(file);
+    //   var fingerFrame = JSON.parse(postData);
+    //   fingerdb.push(fingerFrame);
+    //   storeData = JSON.stringify(fingerdb);
+    //   // console.log(file);
+    //   // console.log(storeData);
+    //   fs.writeFile("./db/finger.json", storeData, function(e) {
+    //     if(e) throw e;
+    //     body += "finger complete.";
+    //   });
+    // } catch(err) {
+    //   body += "finger failed. invaled postData." + e.name + ": " + e.message;
+    // }
+    // MONGO METHOD
     try {
-      file = fs.readFileSync("./db/finger.json", "utf8");
-      var fingerdb = JSON.parse(file);
       var fingerFrame = JSON.parse(postData);
-      fingerdb.push(fingerFrame);
-      storeData = JSON.stringify(fingerdb);
-      // console.log(file);
-      // console.log(storeData);
-      fs.writeFile("./db/finger.json", storeData, function(e) {
-        if(e) throw e;
-        body += "finger complete.";
-      });
+      mongo.insert(fingerFrame);
+      body += "finger complete.";
     } catch(err) {
-      body += "finger failed. invaled postData.";
+      body += "finger failed. invaled postData." + err.name + ": " + err.message;
     }
     //respond
     response.writeHead(200, {
@@ -94,22 +103,30 @@ function locate(response, postData, hostAddress, port) {
 
 function dbshow(response, postData, hostAddress, port) {
   console.log("Request handler 'dbshow' was called.");
-  fs.readFile("./db/finger.txt", function(error, file) {
-    if(error) {
-      response.writeHead(500, {
-        "Content-Type": "text/plain"
-      });
-      response.write(error + "\n");
-      response.end();
-    } else {
-      response.writeHead(200, {
+  // fs.readFile("./db/finger.txt", function(error, file) {
+  //   if(error) {
+  //     response.writeHead(500, {
+  //       "Content-Type": "text/plain"
+  //     });
+  //     response.write(error + "\n");
+  //     response.end();
+  //   } else {
+  //     response.writeHead(200, {
+  //       "Content-Type": "text/plain"
+  //     });
+  //     response.write("This is the Fingerprint DataBase: \n");
+  //     response.write(file);
+  //     response.end();
+  //   }
+  // });
+  var body="";
+  mongo.find(body);
+  response.writeHead(200, {
         "Content-Type": "text/plain"
       });
       response.write("This is the Fingerprint DataBase: \n");
-      response.write(file);
+      response.write(body);
       response.end();
-    }
-  });
 }
 
 exports.start = start;
