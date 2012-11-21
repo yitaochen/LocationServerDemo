@@ -1,4 +1,4 @@
-# gitpush.sh
+# gitpull.sh
 echo "Pulling from remote"
 echo "git add ."
 git add .

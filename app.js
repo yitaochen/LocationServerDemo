@@ -2,22 +2,21 @@
 // by vampirefan
 // the main app.
 // -----------------------------------------------------
-var server = require("./server");
-var router = require("./router");
-var requestHandlers = require("./requestHandlers");
-var mongo = require("./mongo");
+var server = require('./models/server');
+var router = require('./controllers/router');
+var requestHandlers = require('./controllers/requestHandlers');
 
 var handle = {};
-handle["/"] = requestHandlers.start;
-handle["/start"] = requestHandlers.start;
-handle["/login"] = requestHandlers.login;
-handle["/finger"] = requestHandlers.finger;
-handle["/locate"] = requestHandlers.locate;
-handle["/dbshow"] = requestHandlers.dbshow;
+handle['/'] = requestHandlers.start;
+handle['/start'] = requestHandlers.start;
+handle['/login'] = requestHandlers.login;
+handle['/finger'] = requestHandlers.finger;
+handle['/locate'] = requestHandlers.locate;
+handle['/dbshow'] = requestHandlers.dbshow;
 
 // set Host Address
 // Modify the hostAddress [url/ip] here.
-var hostAddress = "127.0.0.1";
+var hostAddress = '127.0.0.1';
 
 // get the local ipv4 address, just for test, please comment the following when use.
 var os = require('os');
@@ -39,6 +38,3 @@ var port = 7878;
 
 // start Server.
 server.start(router.route, handle, hostAddress, port);
-
-// start mongodb Server.
-mongo.start();
