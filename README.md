@@ -6,8 +6,9 @@ NOTE: Using mongodb to store and frame fingers.
 
 # The Server:
 1. install nodejs.
-2. into the dictory: `cd $(locationServerDemo)`
-3. start the server: `node app.js`
+2. install and setup mongodb.
+3. into the dictory: `cd $(locationServerDemo)`
+4. start the server: `node app.js`
 
 ## The finger DataBase (JSON)
 

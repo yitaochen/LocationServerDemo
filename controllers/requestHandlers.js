@@ -2,12 +2,12 @@
 // by vampirefan
 // functions for different request. include /, /start, /login, /finger, /locate, /dbshow
 // -----------------------------------------------------
-
-var server = require("../models/server");
-var querystring = require("querystring");
-var fs = require("fs");
-var Fingerprint = require("../models/fingerprint");
-var locateAlgorithms = require("./locateAlgorithms");
+var server = require('../models/server');
+var querystring = require('querystring');
+var fs = require('fs');
+var Fingerprint = require('../models/fingerprint');
+var locateAlgorithms = require('./locateAlgorithms');
+var logger = require('./logger');
 
 function start(response, postData, hostAddress, port) {
   console.log("Request handler 'start' was called.");
@@ -37,17 +37,18 @@ function finger(response, postData, hostAddress, port) {
     response.writeHead(200, {
       "Content-Type": "text/plain"
     });
+    console.log('finger failed. postData is null.');
     response.write('finger failed. postData is null.');
     response.end();
   } else {
     var body = "You've sent the finger: " + postData + ".\n";
-    var fingerprint = JSON.parse(postData);
+    var fingerprintInput = JSON.parse(postData);
     var newFingerprint = new Fingerprint({
-      locationId: fingerprint.locationId,
-      bearing: fingerprint.bearing,
-      wapInfo: fingerprint.wapInfo
+      locationId: fingerprintInput.locationId,
+      bearing: fingerprintInput.bearing,
+      wapInfo: fingerprintInput.wapInfo
     });
-    Fingerprint.getOne(fingerprint.locationId, function(error, fingerprint) {
+    Fingerprint.getOne(fingerprintInput.locationId, function(error, fingerprint) {
       if(error) {
         body += 'finger failed. invaled postData.' + error.name + ': ' + error.message;
       }
@@ -58,7 +59,9 @@ function finger(response, postData, hostAddress, port) {
           }
         });
         body += 'finger complete.';
+        logger.info('mongodb has a new fingerprint:\n' + 'locationId=' + fingerprintInput.locationId);
       } else {
+        console.log('finger failed. locationId exists.');
         body += 'finger failed. locationId exists.';
       }
       //respond
@@ -83,7 +86,7 @@ function locate(response, postData, hostAddress, port) {
     var body = "You've sent the locateFrame: " + postData + ".\n";
     locateAlgorithms.ed(body, postData, function(error, body) {
       if(error) {
-        body += 'finger failed. invaled postData.' + error.name + ': ' + error.message;
+        body += 'locate failed. invaled postData.' + error.name + ': ' + error.message;
       }
       //respond
       response.writeHead(200, {

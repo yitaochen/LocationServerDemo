@@ -2,9 +2,11 @@
 // by vampirefan
 // the main app.
 // -----------------------------------------------------
+
 var server = require('./models/server');
 var router = require('./controllers/router');
 var requestHandlers = require('./controllers/requestHandlers');
+var logger=require('./controllers/logger');
 
 var handle = {};
 handle['/'] = requestHandlers.start;

@@ -5,6 +5,7 @@
 
 var http = require('http');
 var url = require('url');
+var logger=require('../controllers/logger');
 
 function start(route, handle, hostAddress, port) {
   //deal with connection
@@ -24,7 +25,7 @@ function start(route, handle, hostAddress, port) {
 
   //create Server
   http.createServer(onRequest).listen(port);
-  console.log('Server has started at http://' + hostAddress + ':' + port);
+  logger.info('Server has started at http://' + hostAddress + ':' + port);
   // console.log("Server has started at http://127.0.0.1:7878");
 }
 
