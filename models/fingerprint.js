@@ -13,8 +13,8 @@ function Fingerprint(fingerprint) {
 
 module.exports = Fingerprint;
 
-Fingerprint.prototype.save = function save(callback) {
-  // save to mongodb
+Fingerprint.prototype.insert = function insert(callback) {
+  // insert to mongodb
   var fingerprint = {
     locationId: this.locationId,
     bearing: this.bearing,
@@ -100,7 +100,7 @@ Fingerprint.getAll = function getAll(callback) {
 };
 
 
-Fingerprint.removeAll = function getAll(callback) {
+Fingerprint.removeAll = function removeAll(callback) {
   mongodb.open(function(err, db) {
     if(err) {
       return callback(err);

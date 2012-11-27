@@ -54,7 +54,7 @@ function finger(response, postData, hostAddress, port) {
         body += 'finger failed. invaled postData.' + error.name + ': ' + error.message;
       }
       if(fingerprint === null) {
-        newFingerprint.save(function(error) {
+        newFingerprint.insert(function(error) {
           if(error) {
             body += 'finger failed. invaled postData.' + error.name + ': ' + error.message;
           }
