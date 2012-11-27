@@ -2,19 +2,19 @@
     "locationId": "X62010010102",
     "bearing": 0,
     "wapInfo": [{
-        "bssid": "00602F3A07BC",
+        "bssid": "00:60:2F:3A:07:BC",
         "rssid": 45
     }, {
-        "bssid": "00602F3A07BD",
+        "bssid": "00:60:2F:3A:07:BD",
         "rssid": 56
     }, {
-        "bssid": "00602F3A07BE",
+        "bssid": "00:60:2F:3A:07:BE",
         "rssid": 67
     }, {
-        "bssid": "00602F3A07BF",
+        "bssid": "00:60:2F:3A:07:BF",
         "rssid": 78
     }, {
-        "bssid": "00602F3A07BG",
+        "bssid": "00:60:2F:3A:07:BG",
         "rssid": 89
     }]
 }

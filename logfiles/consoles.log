@@ -4,3 +4,34 @@
 {"level":"info","message":"mongodb has a new fingerprint:\nlocationId=X62010010113","timestamp":"2012-11-21T11:51:52.280Z"}
 {"level":"info","message":"mongodb has a new fingerprint:\nlocationId=X62010010114","timestamp":"2012-11-21T11:52:02.396Z"}
 {"level":"info","message":"mongodb has a new fingerprint:\nlocationId=X62010010115","timestamp":"2012-11-21T11:52:08.043Z"}
+{"level":"info","message":"Server has started at http://192.168.69.33:7878","timestamp":"2012-11-21T12:20:17.034Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T03:45:44.609Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T03:46:13.264Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T03:48:41.096Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:23:05.965Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:23:40.378Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:30:24.396Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:31:25.460Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:32:09.899Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:32:48.490Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:34:20.177Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:37:21.569Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:39:14.637Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:41:21.390Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:41:57.481Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:47:40.278Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:50:08.720Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T04:58:51.662Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T06:44:32.919Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T06:45:49.505Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1 1 1","timestamp":"2012-11-27T06:46:48.998Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T06:47:36.913Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1 1 1","timestamp":"2012-11-27T06:47:56.089Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1 1 2","timestamp":"2012-11-27T06:48:15.504Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T06:49:03.389Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1 1 2","timestamp":"2012-11-27T06:49:15.806Z"}
+{"level":"info","message":"Server has started at http://127.0.0.1:3000","timestamp":"2012-11-27T06:52:42.754Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1  1","timestamp":"2012-11-27T06:53:02.733Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1 2 1","timestamp":"2012-11-27T06:53:17.085Z"}
+{"level":"info","message":"mongodb has a new fingerprint:\nlocationId=E12345678 1 1 2 3","timestamp":"2012-11-27T06:58:44.239Z"}
+{"level":"info","message":"Server has started at http://LocationServerDemo.cloudfoundry.com:3000","timestamp":"2012-11-27T07:00:39.803Z"}

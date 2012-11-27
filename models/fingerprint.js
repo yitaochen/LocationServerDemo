@@ -98,3 +98,23 @@ Fingerprint.getAll = function getAll(callback) {
     });
   });
 };
+
+
+Fingerprint.removeAll = function getAll(callback) {
+  mongodb.open(function(err, db) {
+    if(err) {
+      return callback(err);
+    }
+    // find fingerprint collection
+    db.collection('fingerprints', function(err, collection) {
+      if(err) {
+        mongodb.close();
+        return callback(err);
+      }
+      // remove all fingerprints
+      collection.remove();
+      mongodb.close();
+      return callback(err);
+    });
+  });
+};

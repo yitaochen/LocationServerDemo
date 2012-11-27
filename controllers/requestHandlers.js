@@ -15,7 +15,8 @@ function start(response, postData, hostAddress, port) {
   response.writeHead(200, {
     "Content-Type": "text/html"
   });
-  var body = "You've connected to server: " + hostAddress + ":" + port + ". Please login to continue.\n";
+  // var body = "You've connected to server: " + hostAddress + ":" + port + ". Please login to continue.\n";
+  var body = "You've connected to server: http://LocationServerDemo.cloudfoundry.com. Please login to continue.\n";
   response.write(body);
   response.end();
 }
@@ -104,7 +105,8 @@ function dbshow(response, postData, hostAddress, port) {
     if(error) {
       body += 'finger failed. invaled postData.' + error.name + ': ' + error.message;
     }
-    body += '<html>' + '<head>' + '<meta http-equiv="Content-Type" content="text/html; ' + 'charset=UTF-8" />' + '</head>' + '<body>' + '<table border="1">' + '<tr><th>locationId</th><th>bearing</th><th>[00602F3A07BC].rssid</th><th>[00602F3A07BD].rssid</th><th>[00602F3A07BE].rssid</th><th>[00602F3A07BF].rssid</th><th>[00602F3A07BG].rssid</th></tr>';
+    body += '<html>' + '<head>' + '<meta http-equiv="Content-Type" content="text/html; ' + 'charset=UTF-8" />' + '</head>' + '<body>';
+    body += '<table border="1">' + '<tr><th>locationId</th><th>bearing</th><th>[00:60:2f:3a:07:35].rssid</th><th>[00:60:2f:3a:07:65].rssid</th><th>[00:60:2f:3a:07:15].rssid</th><th>[00:60:2f:3a:07:f5].rssid</th><th>[00:60:2f:3a:07:b5].rssid</th></tr>';
     for(var i = 0; i < fingerprints.length; ++i) {
       body += '<tr><td>' + fingerprints[i].locationId + '</td><td>' + fingerprints[i].bearing + '</td>';
       for(var j = 0; j < fingerprints[i].wapInfo.length; ++j) {
@@ -112,7 +114,9 @@ function dbshow(response, postData, hostAddress, port) {
       }
       body += '</tr>';
     }
-    body += '</table>' + '</body>' + '</html>';
+    body += '<form action="/LocationServerTest.fingerprints.remove()" method="post"><input type="submit" value="!!!Remove All fingerprints!!!" /></form>';
+    body += '</table>';
+    body += '</body>' + '</html>';
     // body = JSON.stringify(fingerprints);
     //respond
     response.writeHead(200, {
@@ -123,8 +127,27 @@ function dbshow(response, postData, hostAddress, port) {
   });
 }
 
+function dbremove(response, postData, hostAddress, port) {
+  var body = '';
+  Fingerprint.removeAll(function(error) {
+    if(error) {
+      body += 'fingerprints remove failed: ' + error.name + ': ' + error.message;
+    }
+    body += 'All fingerprints Removed';
+    //respond
+    response.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+    response.write(body);
+    response.end();
+  });
+
+}
+
 exports.start = start;
 exports.login = login;
 exports.finger = finger;
 exports.locate = locate;
+
 exports.dbshow = dbshow;
+exports.dbremove = dbremove;

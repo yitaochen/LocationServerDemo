@@ -1,7 +1,9 @@
 {
     "name": "LocationServerDemo",
     "version": "3.0.1",
-    "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
     "dependencies": {
         "mongodb ": "*",
         "winston": "*"
